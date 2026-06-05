@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply text-ig-dark antialiased;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer components {
+    .btn-ig {
+        @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold text-sm text-white
+            bg-ig-gradient shadow-md hover:opacity-95 active:scale-[0.98] transition-all duration-150
+            focus:outline-none focus:ring-2 focus:ring-ig-pink/40 focus:ring-offset-2;
+    }
+
+    .btn-ig-outline {
+        @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold text-sm
+            border-2 border-ig-pink text-ig-pink bg-transparent hover:bg-ig-pink/5 transition-all duration-150;
+    }
+
+    .btn-ig-ghost {
+        @apply inline-flex items-center justify-center px-3 py-1.5 rounded-lg text-sm font-medium
+            text-ig-muted hover:bg-ig-hover hover:text-ig-dark transition-colors;
+    }
+
+    .feed-card {
+        @apply bg-ig-card rounded-xl border border-ig-border shadow-card overflow-hidden;
+    }
+
+    .feed-card-header {
+        @apply flex items-center gap-3 px-4 py-3 border-b border-ig-border bg-gradient-to-r from-ig-purple/5 via-ig-pink/5 to-ig-orange/5;
+    }
+
+    .feed-card-body {
+        @apply px-4 py-4;
+    }
+
+    .feed-action-bar {
+        @apply flex items-center gap-1 px-2 py-1 border-t border-ig-border bg-ig-surface/80;
+    }
+
+    .feed-action-btn {
+        @apply flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-medium text-ig-muted
+            rounded-lg hover:bg-ig-hover hover:text-ig-pink transition-colors;
+    }
+
+    .feed-action-btn-active {
+        @apply text-ig-pink font-semibold;
+    }
+
+    .ig-input {
+        @apply w-full rounded-xl border-ig-border bg-ig-surface/50 text-ig-dark placeholder-ig-muted
+            focus:border-ig-pink focus:ring-ig-pink/30 shadow-sm;
+    }
+
+    .ig-label {
+        @apply block text-sm font-semibold text-ig-dark mb-1;
+    }
+
+    .sort-pill {
+        @apply px-4 py-1.5 rounded-full text-sm font-medium transition-all;
+    }
+
+    .sort-pill-active {
+        @apply bg-ig-gradient text-white shadow-md;
+    }
+
+    .sort-pill-inactive {
+        @apply bg-ig-card text-ig-muted border border-ig-border hover:border-ig-pink/40 hover:text-ig-pink;
+    }
+
+    .avatar-ring {
+        @apply rounded-full p-[2px] bg-ig-gradient shrink-0;
+    }
+
+    .avatar-inner {
+        @apply rounded-full bg-ig-card flex items-center justify-center font-bold text-ig-pink;
+    }
+
+    .comment-thread-line {
+        @apply border-l-2 border-ig-pink/20 ms-4 ps-4 mt-3;
+    }
+
+    .feed-shell {
+        @apply flex flex-col gap-6;
+    }
+
+    @media (min-width: 1024px) {
+        .feed-shell:not(.feed-shell--narrow) {
+            @apply flex-row items-start;
+        }
+
+        .feed-sidebar-left {
+            @apply w-[220px] shrink-0;
+        }
+
+        .feed-main {
+            @apply flex-1 min-w-0;
+        }
+
+        .feed-sidebar-right {
+            @apply w-[280px] shrink-0;
+        }
+    }
+}
