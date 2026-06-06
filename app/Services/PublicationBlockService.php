@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Models\Publication;
 use App\Models\PublicationBlock;
+use Cloudinary\Api\Upload\UploadApi;
+use Cloudinary\Configuration\Configuration;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -66,6 +68,15 @@ class PublicationBlockService
 
     public function storeFile(UploadedFile $file, string $type): string
     {
+        Configuration::instance([
+            'cloud' => [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key' => env('CLOUDINARY_API_KEY'),
+                'api_secret' => env('CLOUDINARY_API_SECRET'),
+            ],
+            'url' => ['secure' => true],
+        ]);
+
         $folder = match ($type) {
             PublicationBlock::TYPE_IMAGE, PublicationBlock::TYPE_GIF => 'publications/images',
             PublicationBlock::TYPE_VIDEO => 'publications/videos',
@@ -73,7 +84,11 @@ class PublicationBlockService
             default => 'publications/files',
         };
 
-        $result = cloudinary()->upload($file->getRealPath(), ['folder' => $folder]);
-        return $result->getSecurePath();
+        $result = (new UploadApi())->upload(
+            $file->getRealPath(),
+            ['folder' => $folder]
+        );
+
+        return $result['secure_url'];
     }
 }
