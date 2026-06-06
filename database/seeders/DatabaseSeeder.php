@@ -218,7 +218,7 @@ class DatabaseSeeder extends Seeder
                 'publication_id' => $publications->random()->id,
                 'user_id'        => $users->random()->id,
                 'parent_id'      => null,
-                'content'        => $commentTexts[$i % count($commentTexts)],
+                'body'           => $commentTexts[$i % count($commentTexts)],
                 'created_at'     => now()->subDays(rand(0, 30)),
             ]);
             $comments->push($comment);
@@ -240,7 +240,7 @@ class DatabaseSeeder extends Seeder
                 'publication_id' => $parent->publication_id,
                 'user_id'        => $users->random()->id,
                 'parent_id'      => $parent->id,
-                'content'        => $replyTexts[$i % count($replyTexts)],
+                'body'           => $replyTexts[$i % count($replyTexts)],
                 'created_at'     => now()->subDays(rand(0, 15)),
             ]);
             $comments->push($reply);
