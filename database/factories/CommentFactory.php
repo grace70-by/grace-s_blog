@@ -13,13 +13,14 @@ class CommentFactory extends Factory
 
     public function definition(): array
     {
+        $faker = \Faker\Factory::create('fr_FR');
         return [
             'publication_id' => Publication::factory(),
             'user_id' => User::factory(),
             'parent_id' => null,
-            'body' => $this->faker->realText(200),
+            'body' => $faker->realText(200),
             'hidden_at' => null,
-            'edited_at' => $this->faker->boolean(10) ? $this->faker->dateTimeBetween('-1 month', 'now') : null,
+            'edited_at' => $faker->boolean(10) ? $faker->dateTimeBetween('-1 month', 'now') : null,
         ];
     }
 }
