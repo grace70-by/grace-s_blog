@@ -9,73 +9,77 @@ use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    // Images Unsplash fixes (pas de requête API, URLs directes)
+    // Images Unsplash (Tech, Finance, Musique, et Général)
     private array $images = [
-        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',
-        'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800',
-        'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800',
-        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
-        'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800',
-        'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800',
-        'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800',
-        'https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800',
-        'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800',
-        'https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=800',
-        'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800',
-        'https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=800',
-        'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=800',
-        'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800',
-        'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800',
+        // Tech
+        'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800', // Circuit
+        'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800', // Code laptop
+        'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800', // Cyber
+        // Finance
+        'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800', // Trading
+        'https://images.unsplash.com/photo-1579621970588-a35dce9bc8e5?w=800', // Money
+        'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800', // Stock market
+        // Musique
+        'https://images.unsplash.com/photo-1511671782633-d11bd9a4f458?w=800', // Concert
+        'https://images.unsplash.com/photo-1514320291840-2e0a9ca66ce7?w=800', // Vinyl
+        'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800', // Headphones
+        // Général / Lifestyle / Nature
+        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800', // Stars
+        'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800', // Forest
+        'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800', // Landscape
+        'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800', // Mountains
+        'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800', // Sunset
+        'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800', // Ocean
     ];
 
-    // Textes courts et fixes (pas de fake()->realText() qui consomme trop de mémoire)
+    // Textes courts et variés (Tech, Finance, Musique, Lifestyle)
     private array $introTexts = [
-        "Aujourd'hui je vous partage une réflexion qui me tient à cœur depuis longtemps. La vie nous réserve parfois de belles surprises quand on sait ouvrir les yeux.",
-        "Voici quelques pensées sur ce qui fait la beauté de notre quotidien. Chaque journée est une nouvelle occasion de s'émerveiller.",
+        "L'intelligence artificielle transforme notre quotidien à une vitesse folle. Focus sur les dernières avancées qui redessinent le futur.",
+        "Le développement web ne cesse d'évoluer. Voici quelques frameworks et outils qui ont retenu mon attention cette semaine.",
+        "Comprendre les marchés financiers n'a jamais été aussi crucial. Décryptage des tendances économiques actuelles.",
+        "Les cryptomonnaies et la finance décentralisée (DeFi) bouleversent les codes traditionnels. Faut-il y voir une opportunité ?",
+        "La musique a ce pouvoir unique de nous transporter instantanément. Retour sur les albums qui ont marqué mon année.",
+        "L'évolution de la production musicale avec les nouveaux outils numériques est fascinante. Exploration d'un monde en pleine mutation.",
         "Je voulais vous parler d'un sujet qui me passionne depuis toujours. La nature humaine est fascinante dans toute sa complexité.",
-        "Une expérience récente m'a beaucoup appris. Je la partage avec vous en espérant qu'elle vous inspirera autant qu'elle m'a touché.",
-        "Quelques mots sur un sujet qui me tient à cœur. La bienveillance est une force trop souvent sous-estimée dans notre société.",
-        "Je reviens avec un nouveau billet après quelques jours de réflexion. Les mots ont parfois du mal à venir, mais ils finissent toujours par trouver leur chemin.",
+        "Aujourd'hui je vous partage une réflexion qui me tient à cœur depuis longtemps. La vie nous réserve parfois de belles surprises.",
         "Une promenade, un livre, une conversation... Parfois les meilleures idées naissent des moments les plus simples.",
-        "Aujourd'hui je vous emmène dans un voyage intérieur. La méditation et la pleine conscience ont transformé ma façon de voir les choses.",
         "Le monde change vite, très vite. Voici comment j'essaie de garder le cap face aux turbulences du quotidien.",
-        "La créativité est un muscle qui se travaille chaque jour. Voici mes réflexions sur ce sujet qui m'accompagne depuis l'enfance.",
     ];
 
     private array $bodyTexts = [
-        "Ce que j'ai appris de cette expérience, c'est que la patience est la clé de presque tout. Rien de grand ne se construit en un jour, et c'est peut-être là toute la beauté de la chose.",
-        "Je terminerai par cette pensée : la gratitude transforme ce que nous avons en suffisance, et plus encore. Prenez soin de vous et des autres.",
+        "Que l'on soit développeur ou simple utilisateur, rester à jour sur ces technologies est devenu indispensable pour comprendre le monde de demain.",
+        "Il est fascinant de voir à quel point l'open-source a accéléré l'innovation. La collaboration mondiale est la clé de ces succès.",
+        "Diversifier ses investissements reste la règle d'or. N'oubliez jamais de faire vos propres recherches avant de prendre une décision financière.",
+        "L'économie mondiale est interconnectée. Un événement à l'autre bout du monde peut avoir des répercussions directes sur notre portefeuille.",
+        "Et vous, quels sont les morceaux qui tournent en boucle dans vos écouteurs en ce moment ? Partagez vos découvertes en commentaire !",
+        "La scène indépendante regorge de pépites qui méritent d'être mises en lumière. Soutenons les artistes locaux.",
+        "Ce que j'ai appris de cette expérience, c'est que la patience est la clé de presque tout. Rien de grand ne se construit en un jour.",
+        "Je terminerai par cette pensée : la gratitude transforme ce que nous avons en suffisance, et plus encore. Prenez soin de vous.",
         "En fin de compte, ce sont les petites choses qui comptent le plus. Un sourire, un mot d'encouragement, un moment de silence partagé.",
         "J'espère que ces mots vous auront touché d'une façon ou d'une autre. N'hésitez pas à partager vos propres réflexions en commentaire.",
-        "La route est longue mais le paysage est beau. C'est tout ce que j'ai besoin de savoir pour continuer d'avancer chaque matin.",
-        "Merci de m'avoir lu jusqu'ici. Vos retours et commentaires sont toujours une source d'inspiration précieuse pour moi.",
-        "Le voyage intérieur est sans doute le plus périlleux et le plus récompensant de tous. Bonne route à chacun d'entre vous.",
-        "Je vous laisse avec cette question : qu'est-ce qui vous rend vraiment vivant ? Prenez le temps d'y répondre honnêtement.",
-        "La simplicité est une forme de sophistication que peu de gens maîtrisent vraiment. J'y travaille chaque jour.",
-        "À bientôt pour de nouvelles réflexions. La vie est trop courte pour ne pas partager ce qui nous fait vibrer.",
     ];
 
     private array $titles = [
+        "Le futur de l'Intelligence Artificielle",
+        "L'évolution du développement Web",
+        "Cybersécurité : les nouveaux enjeux",
+        "Pourquoi l'open-source a gagné",
+        "Investir en 2026 : les pièges à éviter",
+        "Comprendre la blockchain simplement",
+        "L'inflation et notre pouvoir d'achat",
+        "L'essor de la finance décentralisée",
+        "Les albums incontournables de l'année",
+        "Comment la tech change la musique",
+        "Le retour en force du vinyle",
+        "À la découverte de la scène indépendante",
         "Réflexions du matin",
-        "Ce que la nature m'a appris",
-        "Petites victoires quotidiennes",
-        "Sur le chemin de la sérénité",
-        "Quand les mots manquent",
         "L'art de ralentir",
         "Fragments de vie",
-        "Entre deux saisons",
-        "La force du silence",
-        "Vers quelque chose de nouveau",
-        "Histoires du soir",
-        "Ce qui me fait avancer",
-        "Lumière sur l'essentiel",
-        "Un pas après l'autre",
-        "Les choses qui comptent",
-        "Instants suspendus",
-        "À contre-courant",
         "Le goût des petites choses",
+        "Instants suspendus",
+        "Entre deux saisons",
         "Carnets de route",
-        "Dans le creux de la vague",
+        "Lumière sur l'essentiel",
     ];
 
     public function run(): void
