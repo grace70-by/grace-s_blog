@@ -15,9 +15,9 @@ class PublicationBlockFactory extends Factory
         return [
             'publication_id' => Publication::factory(),
             'type' => PublicationBlock::TYPE_TEXT,
-            'content' => ['text' => fake()->realText(800)],
+            'content' => ['text' => $this->faker->realText(800)],
             'file_path' => null,
-            'sort_order' => fake()->numberBetween(0, 100),
+            'sort_order' => $this->faker->numberBetween(0, 100),
         ];
     }
 
@@ -25,7 +25,7 @@ class PublicationBlockFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'type' => PublicationBlock::TYPE_IMAGE,
-            'content' => ['alt' => fake()->sentence(), 'caption' => fake()->sentence()],
+            'content' => ['alt' => $this->faker->sentence(), 'caption' => $this->faker->sentence()],
             'file_path' => null, 
         ]);
     }

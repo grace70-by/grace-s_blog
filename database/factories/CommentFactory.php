@@ -17,9 +17,9 @@ class CommentFactory extends Factory
             'publication_id' => Publication::factory(),
             'user_id' => User::factory(),
             'parent_id' => null,
-            'body' => fake()->realText(200),
+            'body' => $this->faker->realText(200),
             'hidden_at' => null,
-            'edited_at' => fake()->boolean(10) ? fake()->dateTimeBetween('-1 month', 'now') : null,
+            'edited_at' => $this->faker->boolean(10) ? $this->faker->dateTimeBetween('-1 month', 'now') : null,
         ];
     }
 }

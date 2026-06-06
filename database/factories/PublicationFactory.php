@@ -13,16 +13,16 @@ class PublicationFactory extends Factory
 
     public function definition(): array
     {
-        $title = fake()->unique()->realText(60);
+        $title = $this->faker->unique()->realText(60);
         return [
             'user_id' => User::factory(),
             'title' => rtrim($title, '.'),
             'slug' => Str::slug($title),
             'status' => Publication::STATUS_PUBLISHED,
-            'meta_description' => fake()->realText(150),
-            'published_at' => fake()->dateTimeBetween('-1 year', 'now'),
-            'views_count' => fake()->numberBetween(10, 10000),
-            'reading_time_minutes' => fake()->numberBetween(1, 15),
+            'meta_description' => $this->faker->realText(150),
+            'published_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'views_count' => $this->faker->numberBetween(10, 10000),
+            'reading_time_minutes' => $this->faker->numberBetween(1, 15),
         ];
     }
 
