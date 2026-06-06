@@ -12,11 +12,13 @@
 
         @case(PublicationBlock::TYPE_IMAGE)
         @case(PublicationBlock::TYPE_GIF)
-            @if ($block->file_path)
-                <img src="{{ $block->fileUrl() }}" alt="{{ $block->content['caption'] ?? '' }}" class="w-full max-h-80 object-cover">
-            @elseif (!empty($block->content['url']))
-                <img src="{{ $block->content['url'] }}" alt="{{ $block->content['caption'] ?? '' }}" class="w-full max-h-80 object-cover">
-            @endif
+            <div class="article-image-container overflow-hidden w-full">
+                @if ($block->file_path)
+                    <img src="{{ $block->fileUrl() }}" alt="{{ $block->content['caption'] ?? '' }}" class="max-w-full w-full h-auto max-h-80 object-cover block overflow-hidden">
+                @elseif (!empty($block->content['url']))
+                    <img src="{{ $block->content['url'] }}" alt="{{ $block->content['caption'] ?? '' }}" class="max-w-full w-full h-auto max-h-80 object-cover block overflow-hidden">
+                @endif
+            </div>
             @break
 
         @case(PublicationBlock::TYPE_VIDEO)
@@ -43,9 +45,15 @@
 
         @case(PublicationBlock::TYPE_EMBED)
             @if ($block->embedUrl())
-                <div class="aspect-video bg-black">
-                    <iframe src="{{ $block->embedUrl() }}" class="w-full h-full" allowfullscreen loading="lazy"></iframe>
-                </div>
+                @if(str_contains($block->embedUrl(), 'unsplash.com') || preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $block->embedUrl()))
+                    <div class="article-image-container overflow-hidden w-full">
+                        <img src="{{ $block->embedUrl() }}" class="max-w-full w-full h-auto max-h-80 object-cover block overflow-hidden">
+                    </div>
+                @else
+                    <div class="aspect-video bg-black overflow-hidden w-full">
+                        <iframe src="{{ $block->embedUrl() }}" class="w-full h-full border-0 overflow-hidden" allowfullscreen loading="lazy" scrolling="no"></iframe>
+                    </div>
+                @endif
             @endif
             @break
     @endswitch
