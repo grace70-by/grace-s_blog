@@ -41,7 +41,7 @@
                 </div>
             @endforeach
         </div>
-        {{ $pendingReports->links() }}
+        {{ $pendingReports->onEachSide(1)->links() }}
     @endif
 
     <h3 class="font-bold text-ig-dark mb-4">Commentaires</h3>
@@ -79,5 +79,5 @@
             <p class="p-6 text-ig-muted text-center">Aucun commentaire.</p>
         @endforelse
     </div>
-    <div class="mt-4">{{ $comments->links() }}</div>
+    <div class="mt-4">{{ $comments->onEachSide(1)->links() }}</div>
 @endsection

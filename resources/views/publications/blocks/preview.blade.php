@@ -14,6 +14,8 @@
         @case(PublicationBlock::TYPE_GIF)
             @if ($block->file_path)
                 <img src="{{ $block->fileUrl() }}" alt="{{ $block->content['caption'] ?? '' }}" class="w-full max-h-80 object-cover">
+            @elseif (!empty($block->content['url']))
+                <img src="{{ $block->content['url'] }}" alt="{{ $block->content['caption'] ?? '' }}" class="w-full max-h-80 object-cover">
             @endif
             @break
 

@@ -174,7 +174,7 @@ class DatabaseSeeder extends Seeder
             if (($i % 3) === 0) {
                 \App\Models\PublicationBlock::create([
                     'publication_id' => $publication->id,
-                    'type'           => \App\Models\PublicationBlock::TYPE_EMBED,
+                    'type'           => \App\Models\PublicationBlock::TYPE_IMAGE,
                     'content'        => ['url' => $this->images[$i % count($this->images)]],
                     'sort_order'     => 2,
                 ]);

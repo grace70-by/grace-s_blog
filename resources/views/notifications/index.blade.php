@@ -35,6 +35,6 @@
             <div class="feed-card p-8 text-center text-ig-muted">Aucune notification.</div>
         @endforelse
 
-        <div>{{ $notifications->links() }}</div>
+        <div>{{ $notifications->onEachSide(1)->links() }}</div>
     </div>
 @endsection

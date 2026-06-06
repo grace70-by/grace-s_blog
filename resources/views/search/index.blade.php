@@ -21,7 +21,7 @@
             @foreach ($publications as $publication)
                 @include('publications._card', ['publication' => $publication])
             @endforeach
-            <div>{{ $publications->links() }}</div>
+            <div>{{ $publications->onEachSide(1)->links() }}</div>
         @endif
     </div>
 @endsection

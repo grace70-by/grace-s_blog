@@ -31,7 +31,7 @@
                 @include('publications._card', ['publication' => $publication])
             @endforeach
 
-            <div class="pt-2">{{ $publications->links() }}</div>
+            <div class="pt-2">{{ $publications->onEachSide(1)->links() }}</div>
         @endif
     </div>
 @endsection

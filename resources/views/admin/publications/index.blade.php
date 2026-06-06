@@ -50,5 +50,5 @@
         </table>
     </div>
 
-    <div class="mt-4">{{ $publications->links() }}</div>
+    <div class="mt-4">{{ $publications->onEachSide(1)->links() }}</div>
 @endsection

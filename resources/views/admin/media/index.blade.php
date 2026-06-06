@@ -38,5 +38,5 @@
         @endforelse
     </div>
 
-    <div class="mt-4">{{ $media->links() }}</div>
+    <div class="mt-4">{{ $media->onEachSide(1)->links() }}</div>
 @endsection

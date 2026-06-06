@@ -24,6 +24,6 @@
             <div class="feed-card p-8 text-center text-ig-muted">Aucune publication publiée.</div>
         @endforelse
 
-        <div>{{ $publications->links() }}</div>
+        <div>{{ $publications->onEachSide(1)->links() }}</div>
     </div>
 @endsection

@@ -48,5 +48,5 @@
         </table>
     </div>
 
-    <div class="mt-4">{{ $users->links() }}</div>
+    <div class="mt-4">{{ $users->onEachSide(1)->links() }}</div>
 @endsection
