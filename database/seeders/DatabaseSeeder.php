@@ -154,10 +154,12 @@ class DatabaseSeeder extends Seeder
 
         foreach (range(1, 50) as $i) {
             $publication = \App\Models\Publication::create([
-                'user_id'    => $adminUser->id,
-                'title'      => $titlePool[($i - 1) % count($titlePool)] . " #{$i}",
-                'created_at' => now()->subDays(rand(0, 60)),
-                'updated_at' => now()->subDays(rand(0, 10)),
+                'user_id'      => $adminUser->id,
+                'title'        => $titlePool[($i - 1) % count($titlePool)] . " #{$i}",
+                'status'       => 'published',
+                'published_at' => now()->subDays(rand(0, 60)),
+                'created_at'   => now()->subDays(rand(0, 60)),
+                'updated_at'   => now()->subDays(rand(0, 10)),
             ]);
 
             // Bloc 1 : texte intro
