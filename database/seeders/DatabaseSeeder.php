@@ -116,7 +116,30 @@ class DatabaseSeeder extends Seeder
 
         // ── 20 Utilisateurs ────────────────────────────────────────
         $this->command->info('Creating 20 users...');
-        $users = User::factory(20)->create();
+        $userNames = [
+            'Sophie Martin', 'Lucas Bernard', 'Emma Dubois', 'Noah Thomas',
+            'Léa Robert', 'Ethan Richard', 'Chloé Petit', 'Hugo Moreau',
+            'Camille Simon', 'Arthur Laurent', 'Inès Michel', 'Louis Garcia',
+            'Jade Martinez', 'Raphaël David', 'Manon Wilson', 'Tom Leroy',
+            'Zoé Anderson', 'Nathan Taylor', 'Lucie Moore', 'Maxime Jackson',
+        ];
+
+        $users = collect();
+        foreach ($userNames as $index => $name) {
+            $slug = \Illuminate\Support\Str::slug($name);
+            $user = User::updateOrCreate(
+                ['email' => "{$slug}@example.com"],
+                [
+                    'name'              => $name,
+                    'username'          => str_replace('-', '_', $slug),
+                    'password'          => Hash::make('password'),
+                    'role'              => User::ROLE_USER,
+                    'email_verified_at' => now(),
+                    'bio'               => null,
+                ]
+            );
+            $users->push($user);
+        }
         $users->push($adminUser);
 
         // ── 50 Publications ────────────────────────────────────────
