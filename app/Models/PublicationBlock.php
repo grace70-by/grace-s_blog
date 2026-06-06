@@ -59,6 +59,12 @@ class PublicationBlock extends Model
             return null;
         }
 
+        // Si c'est déjà une URL complète (Cloudinary), la retourner directement
+        if (str_starts_with($this->file_path, 'http')) {
+            return $this->file_path;
+        }
+
+        // Sinon, URL locale (legacy)
         return asset('storage/'.$this->file_path);
     }
 
