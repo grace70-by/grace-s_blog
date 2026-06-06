@@ -66,13 +66,14 @@ class PublicationBlockService
 
     public function storeFile(UploadedFile $file, string $type): string
     {
-        $directory = match ($type) {
+        $folder = match ($type) {
             PublicationBlock::TYPE_IMAGE, PublicationBlock::TYPE_GIF => 'publications/images',
             PublicationBlock::TYPE_VIDEO => 'publications/videos',
             PublicationBlock::TYPE_AUDIO => 'publications/audio',
             default => 'publications/files',
         };
 
-        return $file->store($directory, 'public');
+        $result = cloudinary()->upload($file->getRealPath(), ['folder' => $folder]);
+        return $result->getSecurePath();
     }
 }
