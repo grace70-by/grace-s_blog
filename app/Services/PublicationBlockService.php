@@ -18,7 +18,7 @@ class PublicationBlockService
         $uploads = $request->file('blocks', []) ?? [];
 
         foreach (array_keys($blocks) as $index) {
-            if (! empty($uploads[$index]['file'])) {
+            if (!empty($uploads[$index]['file'])) {
                 $blocks[$index]['file'] = $uploads[$index]['file'];
             }
         }
@@ -42,10 +42,10 @@ class PublicationBlockService
                 }
 
                 $filePath = null;
-                if (! empty($blockData['existing_file_path'])) {
+                if (!empty($blockData['existing_file_path'])) {
                     $filePath = $blockData['existing_file_path'];
                     $keptPaths[] = $filePath;
-                } elseif (! empty($blockData['file']) && $blockData['file'] instanceof UploadedFile) {
+                } elseif (!empty($blockData['file']) && $blockData['file'] instanceof UploadedFile) {
                     $filePath = $this->storeFile($blockData['file'], $type);
                     $keptPaths[] = $filePath;
                 }
@@ -59,7 +59,7 @@ class PublicationBlockService
             }
 
             foreach ($existingPaths as $path) {
-                if (! in_array($path, $keptPaths, true)) {
+                if (!in_array($path, $keptPaths, true)) {
                     Storage::disk('public')->delete($path);
                 }
             }
